@@ -11,7 +11,7 @@ search: true
 
 # Introduction
 
-Documentation for the AI-Prodict Prediction API. This API is currently in **ALPHA**.
+Documentation for the Corona.ai Prediction API. This API is currently in **ALPHA**.
 
 # Client access token retrieval
 
