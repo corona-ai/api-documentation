@@ -1,1 +1,1 @@
-https://corona-ai.github.com/api-documentation
+https://corona-ai.github.io/api-documentation/
