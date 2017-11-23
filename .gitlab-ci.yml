@@ -1,0 +1,10 @@
+# Official docker image.
+image: ruby:2.3
+
+before_script:
+  - bundle install
+
+build:
+  stage: build
+  script:
+    - bundle exec middleman build --clean
