@@ -246,7 +246,21 @@
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
 <p>Documentation for the Corona.ai Prediction API. This API is currently in <strong>ALPHA</strong>.</p>
-<h1 id='client-access-token-retrieval'>Client access token retrieval</h1><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<p>The API is secured and you need credentials to be able to use it. We use the industry-standard OAuth2 protocol.
+For those of you who&#39;d like more information about the ins and outs of OAuth2 please take a look <a href="https://auth0.com/docs/protocols/oauth2">here</a>. 
+Note that using the API is incredibly easy; you don&#39;t really need an in-depth understanding of OAuth2 to be able to use this API. 
+This documentation contains all the information you need to get started!   </p>
+<h1 id='client-access-token-retrieval'>Client access token retrieval</h1>
+<p>We use the Auth0.com service to manage authentication and authorization. 
+Please check that you have received a <em>client_id</em> and a <em>client_secret</em> before continuing. 
+Retrieval of your access token is a two-step process:</p>
+
+<ol>
+<li><p>Your application authenticates with Auth0 using its <em>client_id</em> and <em>client_secret</em>.</p></li>
+<li><p>Auth0 validates this information and returns an access_token.</p></li>
+</ol>
+<pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
     <span class="s">"https://eggwhite.eu.auth0.com/oauth/token"</span><span class="p">,</span>
     <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s">"Content-Type"</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">},</span>
@@ -278,7 +292,9 @@ Auth0 authentication servers. Tokens have a lifespan of 24 hours. You need to re
 before the old one runs out in order to keep using the API without interruption.</p>
 
 <p>We recommend the <code>requests</code> library for Python for ease of use.</p>
-<h1 id='api-usage'>API Usage</h1><h2 id='transcripts-overview'>Transcripts overview</h2><pre class="highlight python tab-python"><code><span class="n">transcripts</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+<h1 id='api-usage'>API Usage</h1>
+<p>Having an <em>access_token</em>, you are now ready to use the API. </p>
+<h2 id='transcripts-overview'>Transcripts overview</h2><pre class="highlight python tab-python"><code><span class="n">transcripts</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
     <span class="s">"http://35.195.7.94:9998/transcripts"</span><span class="p">,</span>
     <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s">"Authorization"</span><span class="p">:</span> <span class="s">"Bearer &lt;access_token&gt;"</span><span class="p">}</span>
 <span class="p">)</span>
