@@ -14,19 +14,11 @@ search: true
 Documentation for the Corona.ai Prediction API. This API is currently in **ALPHA**.
 
 The API is secured and you need credentials to be able to use it. We use the industry-standard OAuth2 protocol.
-For those of you who'd like more information about the ins and outs of OAuth2 please take a look [here](https://auth0.com/docs/protocols/oauth2). 
-Note that using the API is incredibly easy; you don't really need an in-depth understanding of OAuth2 to be able to use this API. 
+For those of you who'd like more information about the ins and outs of OAuth2 please take a look [here](https://auth0.com/docs/protocols/oauth2).
+Note that using the API is incredibly easy; you don't really need an in-depth understanding of OAuth2 to be able to use this API.
 This documentation contains all the information you need to get started!   
 
 # Client access token retrieval
-We use the Auth0.com service to manage authentication and authorization. 
-Please check that you have received a _client_id_ and a _client_secret_ before continuing. 
-Retrieval of your access token is a two-step process:
-
-1. Your application authenticates with Auth0 using its _client_id_ and _client_secret_.
-
-2. Auth0 validates this information and returns an access_token.
-
 
 ```python
 import requests
@@ -62,6 +54,14 @@ curl --request POST \
 { "error": "access_denied", "error_description": "Unauthorized" }
 ```
 
+We use the Auth0.com service to manage authentication and authorization.
+Please check that you have received a _client_id_ and a _client_secret_ before continuing.
+Retrieval of your access token is a two-step process:
+
+1. Your application authenticates with Auth0 using its _client_id_ and _client_secret_.
+
+2. Auth0 validates this information and returns an access_token.
+
 Retrieving the access token for interaction with our API can be achieved by sending a request to the
 Auth0 authentication servers. Tokens have a lifespan of 24 hours. You need to re-acquire a new one
 before the old one runs out in order to keep using the API without interruption.
@@ -71,7 +71,7 @@ We recommend the `requests` library for Python for ease of use.
 
 # API Usage
 
-Having an _access_token_, you are now ready to use the API. 
+Having an _access_token_, you are now ready to use the API.
 
 ## Transcripts overview
 
