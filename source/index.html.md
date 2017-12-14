@@ -25,7 +25,7 @@ import requests
 data = requests.post(
     "https://eggwhite.eu.auth0.com/oauth/token",
     headers={"Content-Type": "application/json"},
-    data={
+    json={
         "client_id":"<client_id>",
         "client_secret":"<client_secret>",
         "audience":"predictions.ai.bio-prodict.nl",
