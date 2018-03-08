@@ -105,14 +105,14 @@ endpoint.
 
 ```python
 variant_data = requests.get(
-    "http://35.195.7.94:9998/transcripts/ENST00000622645/predictions/110/Arg",
+    "http://35.195.7.94:9998/transcripts/ENST00000622645/predictions/110/Ala",
     headers={"Authorization": "Bearer <access_token>"}
 )
 ```
 
 ```shell
 curl --request GET \
-  --url http://35.195.7.94:9998/transcripts/ENST00000622645/predictions/110/Arg \
+  --url http://35.195.7.94:9998/transcripts/ENST00000622645/predictions/110/Ala\
   --header 'Authorization: Bearer <access_token>'
 ```
 
@@ -129,13 +129,13 @@ Using this endpoint requires the following:
 {
     "residue_type": "Arg",
     "residue_number": 110,
-    "variant_type": "Arg",
-    "source_max": 0.0863609362,
-    "source_min": 0.059299522,
-    "spread": 0.0270614143,
+    "variant_type": "Ala",
+    "source_max": 0.3202865839,
+    "source_min": 0.259611775,
+    "spread": 0.0606748089,
     "transcript_id": "ENST00000622645",
-    "deleterious": 0.0814552796,
-    "effect_summary": "0.0815 (benign, high confidence)"
+    "deleterious": 0.3066707837,
+    "effect_summary": "0.3067 (benign, high confidence)"
 }
 ```
 
