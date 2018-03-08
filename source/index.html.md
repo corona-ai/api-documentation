@@ -105,7 +105,7 @@ endpoint.
 
 ```python
 variant_data = requests.get(
-    "http://35.195.7.94:9998/transcripts/ENST00000622645/predictions/120/Ala",
+    "http://35.195.7.94:9998/transcripts/ENST00000622645/predictions/110/Arg",
     headers={"Authorization": "Bearer <access_token>"}
 )
 ```
