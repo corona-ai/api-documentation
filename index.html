@@ -342,7 +342,8 @@ Using this endpoint requires the following:</p>
     </span><span class="s2">"source_min"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.2482662819</span><span class="p">,</span><span class="w">
     </span><span class="s2">"spread"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.7147740401</span><span class="p">,</span><span class="w">
     </span><span class="s2">"transcript_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ENST00000622645"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"deleterious"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.1931773265</span><span class="w">
+    </span><span class="s2">"deleterious"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.1931773265</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"effect_summary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.1931 (benign, low confidence)"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <table><thead>
@@ -382,6 +383,10 @@ Using this endpoint requires the following:</p>
 <tr>
 <td>deleterious</td>
 <td>Value indicating deleteriousness. Value between 0 and 1, where a value between 0 and 0.5 means benign and a value between 0.5 and 1 means deleterious.</td>
+</tr>
+<tr>
+<td>effect_summary</td>
+<td>A simple summary of the prediction with assesment of the impact on the protein and the confidence in the prediction. The first is based on the &#39;deleterious&#39; score, the second is based on the &#39;spread&#39; score. Our spread indicates the distance between predictions of our subclassifiers in our ensemble. If the score is below 0.15, we determine that the results of the subclassifiers are concordant, resulting in &quot;high confidence&quot;. Between 0.15 and 0.25 indicates &quot;medium confidence&quot; and scores above 0.25 indicate &quot;low confidence&quot;.</td>
 </tr>
 </tbody></table>
 <h1 id='errors'>Errors</h1>
