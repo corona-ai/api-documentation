@@ -112,7 +112,7 @@ variant_data = requests.get(
 
 ```shell
 curl --request GET \
-  --url http://35.195.7.94:9998/transcripts/ENST00000622645/predictions/120/Ser \
+  --url http://35.195.7.94:9998/transcripts/ENST00000622645/predictions/110/Arg \
   --header 'Authorization: Bearer <access_token>'
 ```
 
@@ -127,15 +127,15 @@ Using this endpoint requires the following:
 
 ```json
 {
-    "residue_type": "Ala",
-    "residue_number": 120,
-    "variant_type": "Ser",
-    "source_max": 0.9630403221,
-    "source_min": 0.2482662819,
-    "spread": 0.7147740401,
+    "residue_type": "Arg",
+    "residue_number": 110,
+    "variant_type": "Arg",
+    "source_max": 0.0863609362,
+    "source_min": 0.059299522,
+    "spread": 0.0270614143,
     "transcript_id": "ENST00000622645",
-    "deleterious": 0.1931773265,
-    "effect_summary": "0.1931 (benign, low confidence)"
+    "deleterious": 0.0814552796,
+    "effect_summary": "0.0815 (benign, high confidence)"
 }
 ```
 
