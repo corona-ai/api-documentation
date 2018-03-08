@@ -134,7 +134,8 @@ Using this endpoint requires the following:
     "source_min": 0.2482662819,
     "spread": 0.7147740401,
     "transcript_id": "ENST00000622645",
-    "deleterious": 0.1931773265
+    "deleterious": 0.1931773265,
+    "effect_summary": "0.1931 (benign, low confidence)"
 }
 ```
 
@@ -149,6 +150,7 @@ source_min | Lowest sub-predictor prediction
 spread | Difference between highest and lowest sub-predictions. Can be interpreted as a measure of uncertainty.
 transcript_id | Ensembl transcript id
 deleterious | Value indicating deleteriousness. Value between 0 and 1, where a value between 0 and 0.5 means benign and a value between 0.5 and 1 means deleterious.
+effect_summary | A simple summary of the prediction with assesment of the impact on the protein and the confidence in the prediction. The first is based on the 'deleterious' score, the second is based on the 'spread' score. Our spread indicates the distance between predictions of our subclassifiers in our ensemble. If the score is below 0.15, we determine that the results of the subclassifiers are concordant, resulting in "high confidence". Between 0.15 and 0.25 indicates "medium confidence" and scores above 0.25 indicate "low confidence".
 
 
 # Errors
