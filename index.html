@@ -295,11 +295,11 @@ before the old one runs out in order to keep using the API without interruption.
 <h1 id='api-usage'>API Usage</h1>
 <p>Having an <em>access_token</em>, you are now ready to use the API.</p>
 <h2 id='transcripts-overview'>Transcripts overview</h2><pre class="highlight python tab-python"><code><span class="n">transcripts</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
-    <span class="s">"http://35.195.7.94:9998/transcripts"</span><span class="p">,</span>
+    <span class="s">"https://api.corona.ai/transcripts"</span><span class="p">,</span>
     <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s">"Authorization"</span><span class="p">:</span> <span class="s">"Bearer &lt;access_token&gt;"</span><span class="p">}</span>
 <span class="p">)</span>
 </code></pre><pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url http://35.195.7.94:9998/transcripts <span class="se">\</span>
+  --url https://api.corona.ai/transcripts <span class="se">\</span>
   --header <span class="s1">'Authorization: Bearer &lt;access_token&gt;'</span>
 </code></pre>
 <blockquote>
@@ -315,11 +315,11 @@ endpoint.</p>
 <p>All the request parameters are contained in the URL</p>
 </blockquote>
 <pre class="highlight python tab-python"><code><span class="n">variant_data</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
-    <span class="s">"http://35.195.7.94:9998/transcripts/ENST00000622645/predictions/110/Ala"</span><span class="p">,</span>
+    <span class="s">"https://api.corona.ai/transcripts/ENST00000622645/predictions/110/Ala"</span><span class="p">,</span>
     <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s">"Authorization"</span><span class="p">:</span> <span class="s">"Bearer &lt;access_token&gt;"</span><span class="p">}</span>
 <span class="p">)</span>
 </code></pre><pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url http://35.195.7.94:9998/transcripts/ENST00000622645/predictions/110/Ala<span class="se">\</span>
+  --url https://api.corona.ai/transcripts/ENST00000622645/predictions/110/Ala<span class="se">\</span>
   --header <span class="s1">'Authorization: Bearer &lt;access_token&gt;'</span>
 </code></pre>
 <p>A single endpoint for variant prediction retrieval exists: <code>/transcripts/&lt;transcriptId&gt;/predictions/&lt;residueNumber&gt;/&lt;variantType&gt;</code>.
