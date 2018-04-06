@@ -38,7 +38,7 @@ data = requests.post(
 curl --request POST \
   --url https://eggwhite.eu.auth0.com/oauth/token \
   --header 'content-type: application/json' \
-  --data '{"client_id":"<client_id>","":<client_secret>"audience":"predictions.ai.bio-prodict.nl","grant_type":"client_credentials"}'
+  --data '{"client_id":"<client_id>","client_secret":<client_secret>, "audience":"predictions.ai.bio-prodict.nl","grant_type":"client_credentials"}'
 ```
 
 > Returns the following JSON response:
@@ -77,14 +77,14 @@ Having an _access_token_, you are now ready to use the API.
 
 ```python
 transcripts = requests.get(
-    "http://35.195.7.94:9998/transcripts",
+    "https://api.corona.ai/transcripts",
     headers={"Authorization": "Bearer <access_token>"}
 )
 ```
 
 ```shell
 curl --request GET \
-  --url http://35.195.7.94:9998/transcripts \
+  --url https://api.corona.ai/transcripts \
   --header 'Authorization: Bearer <access_token>'
 ```
 
@@ -105,14 +105,14 @@ endpoint.
 
 ```python
 variant_data = requests.get(
-    "http://35.195.7.94:9998/transcripts/ENST00000622645/predictions/110/Ala",
+    "https://api.corona.ai/transcripts/ENST00000622645/predictions/110/Ala",
     headers={"Authorization": "Bearer <access_token>"}
 )
 ```
 
 ```shell
 curl --request GET \
-  --url http://35.195.7.94:9998/transcripts/ENST00000622645/predictions/110/Ala\
+  --url https://api.corona.ai/transcripts/ENST00000622645/predictions/110/Ala\
   --header 'Authorization: Bearer <access_token>'
 ```
 
