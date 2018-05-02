@@ -262,6 +262,8 @@ This documentation contains all the information you need to get started!   </p>
         <span class="s">"grant_type"</span><span class="p">:</span><span class="s">"client_credentials"</span>
     <span class="p">}</span>
 <span class="p">)</span>
+<span class="c"># Inspect the response</span>
+<span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
 </code></pre><pre class="highlight shell tab-shell"><code>curl --request POST <span class="se">\</span>
   --url https://eggwhite.eu.auth0.com/oauth/token <span class="se">\</span>
   --header <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
