@@ -59,8 +59,8 @@ html, body {
   bottom: 0;
   width: $nav-width;
   background-color: $nav-bg;
-  font-size: 13px;
-  font-weight: bold;
+  font-size: 16pt;
+  font-weight: lighter;
 
   // language selector for mobile devices
   .lang-selector {
@@ -84,10 +84,10 @@ html, body {
       background: $nav-bg;
       border-width: 0 0 1px 0;
       border-color: $search-box-border-color;
-      padding: 6px 0 6px 20px;
+      padding: 10px 0 6px 20px;
       box-sizing: border-box;
-      margin: $nav-v-padding $nav-padding;
-      width: $nav-width - 30;
+      margin: $nav-v-padding $nav-padding + 5;
+      width: $nav-width - 35;
       outline: none;
       color: $nav-text;
       border-radius: 0; /* ios has a default border radius */
@@ -98,6 +98,7 @@ html, body {
       top: 17px;
       left: $nav-padding;
       color: $nav-text;
+      line-height: 1.7;
       @extend %icon-search;
     }
   }
@@ -115,7 +116,7 @@ html, body {
     transition-property: height, margin;
     transition-duration: 180ms;
     transition-timing-function: ease-in-out;
-    background: $nav-subitem-bg;
+    background: #fff;
     &.visible {
       height: 30%;
       margin-bottom: 1em;
@@ -144,7 +145,7 @@ html, body {
     list-style: none;
     margin: 0;
     padding: 0;
-    line-height: 28px;
+    line-height: 2em;
   }
 
   li {
@@ -207,7 +208,7 @@ html, body {
   white-space: nowrap;
   text-overflow: ellipsis;
   text-decoration: none;
-  color: #fff;
+  color: #000;
   transition-property: background;
   transition-timing-function: linear;
   transition-duration: 130ms;
@@ -290,9 +291,11 @@ html, body {
     float:left;
     color: $lang-select-text;
     text-decoration: none;
-    padding: 0 10px;
+    //padding: 0 10px;
+    padding: 1.5em 2.5em;
     line-height: 30px;
     outline: 0;
+    font-size: 125%;
 
     &:active, &:focus {
       background-color: $lang-select-pressed-bg;
@@ -355,9 +358,10 @@ html, body {
     padding-bottom: 0.5em;
     margin-bottom: $h1-margin-bottom;
     margin-top: 2em;
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
+    //border-top: 1px solid #ccc;
+    //border-bottom: 1px solid #ccc;
     background-color: #fdfdfd;
+    font-weight: lighter;
   }
 
   h1:first-child, div:first-child + h1 {
@@ -370,9 +374,10 @@ html, body {
     font-size: 19px;
     margin-top: 4em;
     margin-bottom: 0;
-    border-top: 1px solid #ccc;
+    //border-top: 1px solid #ccc;
     padding-top: 1.2em;
     padding-bottom: 1.2em;
+    font-weight: lighter;
     background-image: linear-gradient(to bottom, rgba(#fff, 0.2), rgba(#fff, 0));
   }
 
@@ -444,7 +449,9 @@ html, body {
   }
 
   p, li, dt, dd {
-    line-height: 1.6;
+    line-height: 2;
+    font-size: 15px;
+    font-weight: 400;
     margin-top: 0;
   }
 

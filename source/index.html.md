@@ -18,7 +18,7 @@ For those of you who'd like more information about the ins and outs of OAuth2 pl
 Note that using the API is incredibly easy; you don't really need an in-depth understanding of OAuth2 to be able to use this API.
 This documentation contains all the information you need to get started!   
 
-# Client access token retrieval
+# Client access tokens
 
 ```python
 import requests
@@ -32,6 +32,8 @@ data = requests.post(
         "grant_type":"client_credentials"
     }
 )
+# Inspect the response
+print(data.json())
 ```
 
 ```shell
@@ -99,7 +101,7 @@ calls. Transcripts are formatted as Ensemble identifiers. This list is retrieved
 endpoint.
 
 
-## Retrieving variant predictions
+## Retrieving single variant predictions
 
 > All the request parameters are contained in the URL
 
@@ -116,7 +118,7 @@ curl --request GET \
   --header 'Authorization: Bearer <access_token>'
 ```
 
-A single endpoint for variant prediction retrieval exists: `/transcripts/<transcriptId>/predictions/<residueNumber>/<variantType>`.
+You can use a simple endpoint for single variant retrieval: `/transcripts/<transcriptId>/predictions/<residueNumber>/<variantType>`.
 Using this endpoint requires the following:
 
 - `transcriptId`: A transcript identifier, like those found in the `/transcripts` endpoint response.
@@ -152,8 +154,81 @@ transcript_id | Ensembl transcript id
 deleterious | Value indicating deleteriousness. Value between 0 and 1, where a value between 0 and 0.5 means benign and a value between 0.5 and 1 means deleterious.
 effect_summary | A simple summary of the prediction with assesment of the impact on the protein and the confidence in the prediction. The first is based on the 'deleterious' score, the second is based on the 'spread' score. Our spread indicates the distance between predictions of our subclassifiers in our ensemble. If the score is below 0.15, we determine that the results of the subclassifiers are concordant, resulting in "high confidence". Between 0.15 and 0.25 indicates "medium confidence" and scores above 0.25 indicate "low confidence".
 
+### Errors
 
-# Errors
+Will return a 404 error if the requested variant is not found.
 
-Currently, all errors (including authentication errors) will yield a `500` response and a JSON body,
-containing `{"Error": "Internal Server Error"}`.
+
+## Batch retrieval of variant predictions
+
+> Batch retrieval requires a POST request with values
+
+```python
+variants = [
+  "ENST00000622645/110/Ala",
+  "ENST00000622645/110/Val",
+  "ENST00000622645/110/Pro"
+]
+variant_data = requests.post(
+    "https://api.corona.ai/batch",
+    headers={"Authorization": "Bearer <access_token>"},
+    data={"variants": "\n".join(variants)}
+)
+```
+
+```shell
+echo "variants=ENST00000622645/110/Ala\nENST00000622645/110/Val\nENST00000622645/110/Pro" > variants.txt
+
+curl --request POST \
+  -d "@variants.txt" \
+  --url https://api.corona.ai/batch\
+  --header 'Authorization: Bearer <access_token>'
+```
+
+Variants can also be retrieved in batches using the `/batch` endpoint.
+Using this endpoint requires a newline-separated list of variant identifiers, composed of three values separated by slashes (`/`):
+
+- `transcriptId`: A transcript identifier, like those found in the `/transcripts` endpoint response.
+- `residueNumber`: A number indicating the residue in this transcript. Residue numbers start at 1.
+- `variantType`: The variant you would like to find the information for. Only 3 letter codes are accepted. Case insensitive.
+
+> Returns the following JSON response:
+
+```json
+[
+    {
+      "residue_type": "Arg",
+      "residue_number": 110,
+      "variant_type": "Ala",
+      "source_max": 0.3202865839,
+      "source_min": 0.259611775,
+      "spread": 0.0606748089,
+      "transcript_id": "ENST00000622645",
+      "deleterious": 0.3066707837,
+      "effect_summary": "0.3067 (benign, high confidence)"
+    },
+    {
+      ...
+    },
+    {
+      ...
+    }
+]
+```
+
+
+Identifier | Description
+----|------
+residue_type | Wildtype amino acid
+residue_number | 1-based protein sequence number
+variant_type | Variant amino acid type
+source_max | Highest sub-predictor prediction
+source_min | Lowest sub-predictor prediction
+spread | Difference between highest and lowest sub-predictions. Can be interpreted as a measure of uncertainty.
+transcript_id | Ensembl transcript id
+deleterious | Value indicating deleteriousness. Value between 0 and 1, where a value between 0 and 0.5 means benign and a value between 0.5 and 1 means deleterious.
+effect_summary | A simple summary of the prediction with assesment of the impact on the protein and the confidence in the prediction. The first is based on the 'deleterious' score, the second is based on the 'spread' score. Our spread indicates the distance between predictions of our subclassifiers in our ensemble. If the score is below 0.15, we determine that the results of the subclassifiers are concordant, resulting in "high confidence". Between 0.15 and 0.25 indicates "medium confidence" and scores above 0.25 indicate "low confidence".
+
+### Errors
+
+This endpoint does not return 404 errors when the variants requested are not available. Instead, a None value is inserted when a variant is not available. This preserves the order of the batch request.
