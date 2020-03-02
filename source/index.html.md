@@ -11,7 +11,7 @@ search: true
 
 # Introduction
 
-Documentation for the Corona.ai Prediction API. This API is currently in **ALPHA**.
+Documentation for the Helix Labs Pathogenicity Prediction API.
 
 The API is secured and you need credentials to be able to use it. We use the industry-standard OAuth2 protocol.
 For those of you who'd like more information about the ins and outs of OAuth2 please take a look [here](https://auth0.com/docs/protocols/oauth2).
@@ -79,14 +79,14 @@ Having an _access_token_, you are now ready to use the API.
 
 ```python
 transcripts = requests.get(
-    "https://api.corona.ai/transcripts",
+    "https://api.helixlabs.ai/transcripts",
     headers={"Authorization": "Bearer <access_token>"}
 )
 ```
 
 ```shell
 curl --request GET \
-  --url https://api.corona.ai/transcripts \
+  --url https://api.helixlabs.ai/transcripts \
   --header 'Authorization: Bearer <access_token>'
 ```
 
@@ -107,14 +107,14 @@ endpoint.
 
 ```python
 variant_data = requests.get(
-    "https://api.corona.ai/transcripts/ENST00000622645/predictions/110/Ala",
+    "https://api.helixlabs.ai/transcripts/ENST00000622645/predictions/110/Ala",
     headers={"Authorization": "Bearer <access_token>"}
 )
 ```
 
 ```shell
 curl --request GET \
-  --url https://api.corona.ai/transcripts/ENST00000622645/predictions/110/Ala\
+  --url https://api.helixlabs.ai/transcripts/ENST00000622645/predictions/110/Ala\
   --header 'Authorization: Bearer <access_token>'
 ```
 
@@ -170,7 +170,7 @@ variants = [
   "ENST00000622645/110/Pro"
 ]
 variant_data = requests.post(
-    "https://api.corona.ai/batch",
+    "https://api.helixlabs.ai/batch",
     headers={"Authorization": "Bearer <access_token>"},
     data={"variants": "\n".join(variants)}
 )
@@ -181,7 +181,7 @@ echo "variants=ENST00000622645/110/Ala\nENST00000622645/110/Val\nENST00000622645
 
 curl --request POST \
   -d "@variants.txt" \
-  --url https://api.corona.ai/batch\
+  --url https://api.helixlabs.ai/batch\
   --header 'Authorization: Bearer <access_token>'
 ```
 
